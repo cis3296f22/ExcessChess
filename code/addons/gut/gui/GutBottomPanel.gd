@@ -1,10 +1,10 @@
 tool
 extends Control
 
-const RUNNER_JSON_PATH = 'res://.gut_editor_config.json'
+const RUNNER_JSON_PATH = 'res://addons/gut/config/.gut_editor_config.json'
 const RESULT_FILE = 'user://.gut_editor.bbcode'
 const RESULT_JSON = 'user://.gut_editor.json'
-const SHORTCUTS_PATH = 'res://.gut_editor_shortcuts.cfg'
+const SHORTCUTS_PATH = 'res://addons/gut/config/.gut_editor_shortcuts.cfg'
 
 var TestScript = load('res://addons/gut/test.gd')
 var GutConfigGui = load('res://addons/gut/gui/gut_config_gui.gd')

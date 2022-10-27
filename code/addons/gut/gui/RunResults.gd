@@ -42,7 +42,7 @@ func _test_running_setup():
 	_hide_passing = true
 	_show_orphans = true
 	var _gut_config = load('res://addons/gut/gut_config.gd').new()
-	_gut_config.load_panel_options('res://.gut_editor_config.json')
+	_gut_config.load_panel_options('res://addons/gut/config/.gut_editor_config.json')
 	set_font(
 		_gut_config.options.panel_options.font_name,
 		_gut_config.options.panel_options.font_size)
