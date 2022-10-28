@@ -3,3 +3,7 @@
 *.translation
 export_presets.cfg
 .mono/
+#Outputs
+*.x86_64
+*.exe
+*.pck
