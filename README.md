@@ -4,26 +4,38 @@ Two people can use Excess Chess to play a standard game of chess over the intern
 Adding an screenshot or a mockup of your application in action would be nice.  
 
 ![This is a screenshot.](images.png)
-# How to run
-Provide here instructions on how to use your application.   
-- Download the latest binary from the Release section on the right on GitHub.  
-- On the command line uncompress using
-```
-tar -xzf  
-```
-- On the command line run with
-```
-./hello
-```
-- You will see Hello World! on your terminal. 
+# How to run   
+1. Download the latest binary for your operating system from the [Release](https://github.com/cis3296f22/ExcessChess/releases) section on GitHub, or see "How to build" below.
+2. Find the executable using your file explorer or terminal.
+3. Double-click the executable (or enter its path name in a terminal) to start the game.
+4. Use the mouse to interact with the in-game window.
+### How to build
+1. Run the Godot Engine v3.5.1.
+    - Download the archive for your operating system. ([GodotEngine.org](https://godotengine.org/download) | [GitHub Releases](https://github.com/godotengine/godot/releases/tag/3.5.1-stable))
+    - Extract the archive.
+    - Run the godot executable, for example double-clicking the "Godot_v3.5.1-stable_win64.exe" file.
+2. Import the project into godot.
+    - Download the [main branch](https://github.com/cis3296f22/ExcessChess/archive/refs/heads/main.zip) of this repository.
+    - In the right-hand menu, select "Import." A dialog will appear.
+    - Select "Browse" in the dialog.
+    - Navigate to and select the ZIP file downloaded from this repository.
+    - Select the new "Browse" option that appears.
+    - Navigate to and select an empty folder to install the project.
+    - Click "Import & Edit."
+3. Export the project to an executable binary.
+    - In the top-level, select "Project".
+    - Select "Export..."
+    - Across from Presets, select "Add."
+    - Choose your operating system (Additional setup may be required).
+    - Select "Export Project..."
+    - Navigate to select the location and name for the new executable.
+    - Click "Save."
+4. Close godot
+    - Click "Close."
+    - In the top-level menu, select "Scene."
+    - Press "Quit."
+
+Now you have a game that you can run!
 
 # How to contribute
 Follow [[this project board](https://github.com/orgs/cis3296f22/projects/104)] to know the latest status of the project! 
-
-### How to build
-- Use this github repository: ... 
-- Specify what branch to use for a more stable release or for cutting edge development.  
-- Use InteliJ 11
-- Specify additional library to download if needed 
-- What file and target to compile and run. 
-- What is expected to happen when the app start. 
