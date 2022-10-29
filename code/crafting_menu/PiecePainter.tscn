@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://crafting_menu/SquareSelector.gd" type="Script" id=1]
+[ext_resource path="res://crafting_menu/PieceDrawer.gd" type="Script" id=2]
+
+[node name="PiecePlacer" type="Control"]
+
+[node name="SquareSelector" type="GridContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 8
+script = ExtResource( 1 )
+
+[node name="PieceDrawer" type="GridContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 8
+script = ExtResource( 2 )
