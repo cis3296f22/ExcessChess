@@ -38,10 +38,27 @@ func _ready():
 #			x.texture_pressed = black_square
 #			x.texture_hover = green_square
 
+func reDraw(selected_tile: int):
+	var children = get_children()
+	for child in children:
+		var i = child.ID % DEFUALT_WIDTH
+		var j = child.ID / DEFUALT_WIDTH
+		if selected_tile == child.ID:
+			child.texture_normal = green_square
+		else:
+			if (i%2 + j%2) %2 == 0:
+				child.texture_normal = white_square
+			else:
+				child.texture_normal = black_square
+		
+	
+
 
 func child_pressed(bound):
+	reDraw(bound)
 	print("Child ", bound, " Pressed!")
-	$"../PieceDrawer".show_child(bound)
+	
+	#$"../PieceDrawer".show_child(bound)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
