@@ -10,7 +10,7 @@ var rotations = [[1, 0, 0, 1], [0, -1, 1, 0], [-1, 0, 0, -1], [0, 1, -1, 0]]
 func _init(team_new):
 	team = team_new
 	type = Type.KNIGHT
-	hasMoved = false
+	has_moved = false
 
 
 func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):

@@ -5,7 +5,7 @@ extends Piece
 func _init(team_new):
 	team = team_new
 	type = Type.PAWN
-	hasMoved = false
+	has_moved = false
 
 
 func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
@@ -16,7 +16,7 @@ func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
 	# Get forward movements.
 	position = orig_pos + sgn * board_width
 	_add_move(moves, position, max_pos, board_map)
-	if not hasMoved:
+	if not has_moved:
 		_add_move(moves, position + sgn * board_width, max_pos, board_map)
 	# Get diagonal captures.
 	_add_capture(moves, position + 1, board_map)

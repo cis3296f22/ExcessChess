@@ -10,7 +10,7 @@ var directions = [[0, 1], [1,1], [1, 0], [1, -1],
 func _init(team_new):
 	team = team_new
 	type = Type.KING
-	hasMoved = false
+	has_moved = false
 
 
 func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
@@ -23,7 +23,9 @@ func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
 			moves.append(position)
 
 	# TODO Implement castling validation.
+
 	return moves
+
 
 # TODO add public method to search for check given any board state.
 

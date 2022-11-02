@@ -5,7 +5,7 @@ extends Piece
 func _init(team_new):
 	team = team_new
 	type = Type.BISHOP
-	hasMoved = false
+	has_moved = false
 
 
 func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
