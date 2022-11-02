@@ -10,6 +10,12 @@ var type = -1
 var hasMoved = false
 
 
-# Given board state information, this function returns a list of potentially valid new positions.
-func getMoves(_state):
+# Given game state information, this function returns a list of potentially valid new positions.
+# Arguments:
+# orig_pos: The original postion of the piece.
+# max_pos: The maximum board position.
+# board_width: The length of the board's width.
+# board_pieces: The map of board positions and chess pieces.
+# prev_move: Information about the previous chess movement.
+func getMoves(_orig_pos, _max_pos, _board_width, _board_pieces, _prev_move):
 	pass
