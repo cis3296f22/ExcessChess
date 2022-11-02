@@ -13,7 +13,7 @@ var movements = [[1, 2], [-1, 2]]
 var rotations = [[1, 0, 0, 1], [0, -1, 1, 0], [-1, 0, 0, -1], [0, 1, -1, 0]]
 
 
-func getMoves(orig_pos, max_pos, board_width, board_map, _prev_move):
+func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
 	var moves = []
 	for move in movements:
 		for rot in rotations:

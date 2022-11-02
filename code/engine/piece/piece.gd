@@ -17,5 +17,5 @@ var hasMoved = false
 # board_width: The length of the board's width.
 # board_map: The map of board positions and chess pieces.
 # prev_move: Information about the previous chess movement.
-func getMoves(_orig_pos, _max_pos, _board_width, _board_map, _prev_move):
+func calc_moves(_orig_pos, _max_pos, _board_width, _board_map, _prev_move):
 	pass
