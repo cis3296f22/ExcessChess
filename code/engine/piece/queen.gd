@@ -1,10 +1,10 @@
 extends Piece
-# Rook represents the rook chess piece.
+# Queen represents the queen chess piece.
 
 
 func _init(team_new):
 	team = team_new
-	type = Type.ROOK
+	type = Type.QUEEN
 	hasMoved = false
 
 func getMoves(orig_pos, max_pos, board_width, board_map, _prev_move):
@@ -18,6 +18,15 @@ func getMoves(orig_pos, max_pos, board_width, board_map, _prev_move):
 	# Get file movements.
 	_reach(moves, orig_pos + board_width, max_pos + 1, board_width, max_pos, board_map)
 	_reach(moves, orig_pos - board_width, start_file - 1, -board_width, max_pos, board_map)
+	# Get diagonal movements.
+	_reach(moves, orig_pos + board_width + 1, orig_pos + (board_width - start_file - 1) * (board_width + 1),
+			board_width + 1, max_pos, board_map)
+	_reach(moves, orig_pos + board_width - 1, orig_pos + (start_file) * (board_width - 1),
+			board_width - 1, max_pos, board_map)
+	_reach(moves, orig_pos - board_width - 1, orig_pos + (start_file) * (-1 - board_width),
+			-1 - board_width, max_pos, board_map)
+	_reach(moves, orig_pos - board_width + 1, orig_pos + (board_width - start_file - 1) * (1 - board_width),
+			1 - board_width, max_pos, board_map)
 
 	return moves
 

@@ -30,7 +30,7 @@ func _reach(moves, start, end, step, max_pos, board_map):
 			if pos >= 0 and pos <= max_pos:
 				moves.append(pos)
 		else:
-			# If the piece can be captured, then update reach.
+			# If the piece can be captured, then add move.
 			if board_map[pos].team != team and board_map[pos].type != Type.KING:
 				moves.append(pos)
 			# Exit loop because pieces block further movement.
