@@ -7,6 +7,7 @@ func _init(team_new):
 	type = Type.BISHOP
 	hasMoved = false
 
+
 func getMoves(orig_pos, max_pos, board_width, board_map, _prev_move):
 	var moves = []
 	var start_file = orig_pos % board_width
