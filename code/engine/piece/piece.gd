@@ -7,7 +7,14 @@ enum Type { PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING }
 # Properties
 var team = -1
 var type = -1
+var id = -1
 var has_moved = false
+
+
+func _init(team_new, id_new):
+	team = team_new
+	id = id_new
+	has_moved = false
 
 
 # Given game state information, this function returns a list of potentially valid new positions.
