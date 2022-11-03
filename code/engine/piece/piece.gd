@@ -12,9 +12,9 @@ var has_moved = false
 
 
 func _init(team_new, id_new):
-	team = team_new
-	id = id_new
-	has_moved = false
+    team = team_new
+    id = id_new
+    has_moved = false
 
 
 # Given game state information, this function returns a list of potentially valid new positions.
@@ -25,4 +25,4 @@ func _init(team_new, id_new):
 # board_map: The map of board positions and chess pieces.
 # prev_move: Information about the previous chess movement.
 func calc_moves(_orig_pos, _max_pos, _board_width, _board_map, _prev_move):
-	pass
+    pass
