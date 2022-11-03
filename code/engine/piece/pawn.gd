@@ -42,5 +42,5 @@ func _add_move(moves, position, max_pos, board_map):
 # position: The prospective position.
 # board_map: The map of board positions and chess pieces.
 func _add_capture(moves, position, board_map):
-    if board_map.has(position) and board_map[position].team != team:
+    if board_map.has(position) and board_map[position].get("team") != team:
         moves.append(position)

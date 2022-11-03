@@ -48,7 +48,7 @@ func _add_moves(moves, start, end, step, max_pos, board_map):
                 moves.append(pos)
         else:
             # If the piece can be captured, then add move.
-            if board_map[pos].team != team:
+            if board_map[pos].get("team") != team:
                 moves.append(pos)
             # Exit loop because pieces block further movement.
             break

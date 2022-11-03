@@ -1,14 +1,25 @@
 class_name Piece
-# Piece is the base class for chess engine pieces.
+# Piece is the base class for chess pieces.
 
-enum Team { WHITE, BLACK }
-enum Type { PAWN, ROOK, KNIGHT, BISHOP, QUEEN, KING }
 
-# Properties
-var team = -1
-var type = -1
-var id = -1
-var has_moved = false
+# Built-in chess teams.
+var Team = {
+    WHITE = "white",
+    BLACK = "black",
+}
+# Built-in chess piece types.
+var Type = {
+    PAWN = "pawn",
+    KNIGHT = "knight",
+    BISHOP = "bishop",
+    ROOK = "rook",
+    QUEEN = "queen",
+    KING = "king",
+}
+var team
+var type
+var id
+var has_moved
 
 
 func _init(team_new, id_new):
