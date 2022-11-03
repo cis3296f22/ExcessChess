@@ -13,8 +13,8 @@ func _ready():
 	
 	set_columns(DEFUALT_WIDTH)
 	
-	for i in range(DEFUALT_HEIGHT):
-		for j in range(DEFUALT_WIDTH):
+	for _i in range(DEFUALT_HEIGHT):
+		for _j in range(DEFUALT_WIDTH):
 			var x = TextureRect.new()
 			x.texture = green_square
 			x.set_modulate(Color(1,1,1,0)) #Set alpha to 0, so it's invisible
