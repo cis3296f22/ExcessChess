@@ -26,10 +26,7 @@ func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
 			if (
 					new_pos >= 0
 					and new_pos <= max_pos
-					and (
-							not board_map.has(new_pos)
-							or board_map[new_pos].team != team and board_map[new_pos].type != Type.KING
-					)
+					and (not board_map.has(new_pos) or board_map[new_pos].team != team)
 			):
 				moves.append(new_pos)
 	return moves

@@ -27,9 +27,6 @@ func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
 	return moves
 
 
-# TODO add public method to search for check given any board state.
-
-
 # Checks if a space can be moved into.
 # Arguments:
 # position: The prospective position.
@@ -41,10 +38,7 @@ func _is_move_valid(position, max_pos, board_map):
 	if (
 			position >= 0
 			and position <= max_pos
-			and (
-					not board_map.has(position)
-					or board_map[position].team != team and board_map[position].type != Type.KING
-			)
+			and (not board_map.has(position) or board_map[position].team != team)
 	):
 		return true
 	else:
