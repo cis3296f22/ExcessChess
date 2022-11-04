@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://crafting_menu/PiecePainter.gd" type="Script" id=1]
 [ext_resource path="res://crafting_menu/PieceDrawer.gd" type="Script" id=2]
 [ext_resource path="res://crafting_menu/SquareSelector.gd" type="Script" id=3]
-[ext_resource path="res://assets/board/black_square.png" type="Texture" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
 
 [node name="PiecePlacer" type="Control"]
 script = ExtResource( 1 )
@@ -25,10 +23,3 @@ custom_constants/vseparation = 0
 custom_constants/hseparation = 0
 columns = 8
 script = ExtResource( 2 )
-
-[node name="TextureButton" type="TextureButton" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-toggle_mode = true
-texture_normal = ExtResource( 5 )
-texture_pressed = ExtResource( 4 )
