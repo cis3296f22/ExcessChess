@@ -8,18 +8,13 @@
 script = ExtResource( 1 )
 
 [node name="SquareSelector" type="GridContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 512.0
+margin_bottom = 512.0
 custom_constants/vseparation = 0
 custom_constants/hseparation = 0
 columns = 8
 script = ExtResource( 3 )
 
-[node name="PieceDrawer" type="GridContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="PieceDrawer" type="Container" parent="."]
 mouse_filter = 2
-custom_constants/vseparation = 0
-custom_constants/hseparation = 0
-columns = 8
 script = ExtResource( 2 )
