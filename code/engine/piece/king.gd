@@ -16,9 +16,9 @@ func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
 
 	# Get basic movements.
 	for dir in directions:
-		var position = orig_pos + dir[0] + dir[1] * board_width
-		if _is_move_valid(position, max_pos, board_map):
-			moves.append(position)
+		var new_pos = orig_pos + dir[0] + dir[1] * board_width
+		if _is_move_valid(new_pos, max_pos, board_map):
+			moves.append(new_pos)
 
 	# TODO Implement castling validation.
 
@@ -27,16 +27,16 @@ func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
 
 # Checks if a space can be moved into.
 # Arguments:
-# position: The prospective position.
+# new_pos: The prospective position.
 # max_pos: The maximum position.
 # board_map: The map of board positions and chess pieces.
 # Return:
 #   True is the move is valid, else false.
-func _is_move_valid(position, max_pos, board_map):
+func _is_move_valid(new_pos, max_pos, board_map):
 	if (
-			position >= 0
-			and position <= max_pos
-			and (not board_map.has(position) or board_map[position].get("team") != team)
+			new_pos >= 0
+			and new_pos <= max_pos
+			and (not board_map.has(new_pos) or board_map[new_pos].get("team") != team)
 	):
 		return true
 	else:
