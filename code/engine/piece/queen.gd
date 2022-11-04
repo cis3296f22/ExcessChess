@@ -5,8 +5,8 @@ extends Piece
 const linear = preload("res://engine/move/linear_move.gd")
 
 
-func _init(team_new, id_new).(team_new, id_new):
-	type = Type.QUEEN
+func _init(team_new, id_new).(team_new, Type.QUEEN, id_new):
+	pass
 
 
 func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):

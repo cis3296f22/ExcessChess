@@ -7,8 +7,8 @@ var movements = [[1, 2], [-1, 2]]
 var rotations = [[1, 0, 0, 1], [0, -1, 1, 0], [-1, 0, 0, -1], [0, 1, -1, 0]]
 
 
-func _init(team_new, id_new).(team_new, id_new):
-    type = Type.KNIGHT
+func _init(team_new, id_new).(team_new, Type.KNIGHT, id_new):
+    pass
 
 
 func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):

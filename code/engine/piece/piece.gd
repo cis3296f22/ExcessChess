@@ -22,8 +22,9 @@ var id
 var has_moved
 
 
-func _init(team_new, id_new):
+func _init(team_new, id_new, type_new):
     team = team_new
+    type = type_new
     id = id_new
     has_moved = false
 

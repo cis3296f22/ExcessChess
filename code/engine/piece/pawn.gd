@@ -2,8 +2,8 @@ extends Piece
 # Pawn represents the pawn chess piece.
 
 
-func _init(team_new, id_new).(team_new, id_new):
-    type = Type.PAWN
+func _init(team_new, id_new).(team_new, Type.PAWN, id_new):
+    pass
 
 
 func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):

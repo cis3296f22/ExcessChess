@@ -7,8 +7,8 @@ var directions = [[0, 1], [1,1], [1, 0], [1, -1],
 		[0, -1], [-1, -1], [-1, 0], [-1, 1]]
 
 
-func _init(team_new, id_new).(team_new, id_new):
-	type = Type.KING
+func _init(team_new, id_new).(team_new, Type.KING, id_new):
+	pass
 
 
 func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
