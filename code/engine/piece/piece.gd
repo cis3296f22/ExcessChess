@@ -3,12 +3,12 @@ class_name Piece
 
 
 # Built-in chess teams.
-var Team = {
+const Team = {
     WHITE = "white",
     BLACK = "black",
 }
 # Built-in chess piece types.
-var Type = {
+const Type = {
     PAWN = "pawn",
     KNIGHT = "knight",
     BISHOP = "bishop",
