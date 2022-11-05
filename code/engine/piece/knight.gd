@@ -1,5 +1,4 @@
-extends Piece
-# Knight represents the knight chess piece.
+# Knight represents the knight chess piece logic.
 
 
 var movements = [[1, 2], [-1, 2]]
@@ -7,24 +6,26 @@ var movements = [[1, 2], [-1, 2]]
 var rotations = [[1, 0, 0, 1], [0, -1, 1, 0], [-1, 0, 0, -1], [0, 1, -1, 0]]
 
 
-func _init(team_new, id_new).(team_new, Type.KNIGHT, id_new):
-	pass
-
-
-func calc_moves(orig_pos, max_pos, board_width, board_map, _prev_move):
+# Given game state information, this function returns a list of potentially valid new positions.
+# Arguments:
+# pos: The original position. of the piece.
+# piece: The piece's state information.
+# game: The game's state information.
+func calc_moves(pos, piece, game):
 	var moves = []
+	var pieces = game.pieces
 	for move in movements:
 		for rot in rotations:
 			var new_pos = (
-					orig_pos
+					pos
 					+ move[0] * rot[0]
 					+ move[1] * rot[1]
-					+ (move[0] * rot[2] + move[1] * rot[3]) * board_width
+					+ (move[0] * rot[2] + move[1] * rot[3]) * game.get("width")
 			)
 			if (
 					new_pos >= 0
-					and new_pos <= max_pos
-					and (not board_map.has(new_pos) or board_map[new_pos].get("team") != team)
+					and new_pos <= game.get("max_pos")
+					and (not pieces.has(new_pos) or pieces[new_pos].team != piece.team)
 			):
 				moves.append(new_pos)
 	return moves
