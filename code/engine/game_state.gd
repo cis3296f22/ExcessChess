@@ -1,4 +1,4 @@
-# Stores information about the game state and configuration.
+# Stores information about the game configuration and state.
 
 
 # Game Configuration
@@ -12,7 +12,8 @@ var pieces
 # var history
 
 
-func _init(width_new: int, height_new: int):
-	width = width_new
-	height = height_new
+func _init(_width: int, _height: int):
+	width = _width
+	height = _height
 	max_pos = width * height - 1
+	pieces = {}

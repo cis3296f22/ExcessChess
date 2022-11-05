@@ -8,8 +8,8 @@ var type
 var has_moved
 
 
-func _init(id_new, team_new, type_new):
-	id = id_new
-	team = team_new
-	type = type_new
+func _init(_id, _team, _type):
+	id = _id
+	team = _team
+	type = _type
 	has_moved = false
