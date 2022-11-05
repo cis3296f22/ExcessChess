@@ -11,8 +11,10 @@ var rotations = [[1, 0, 0, 1], [0, -1, 1, 0], [-1, 0, 0, -1], [0, 1, -1, 0]]
 # pos: The original position. of the piece.
 # piece: The piece's state information.
 # game: The game's state information.
+# Return:
+#	Returns an array of positions.
 func calc_moves(pos, piece, game):
-	var moves = []
+	var positions = []
 	var pieces = game.pieces
 	for move in movements:
 		for rot in rotations:
@@ -27,5 +29,5 @@ func calc_moves(pos, piece, game):
 					and new_pos <= game.get("max_pos")
 					and (not pieces.has(new_pos) or pieces[new_pos].team != piece.team)
 			):
-				moves.append(new_pos)
-	return moves
+				positions.append(new_pos)
+	return positions
