@@ -1,4 +1,4 @@
-# Pawn represents the pawn chess piece logic.
+# Pawn contains the pawn chess piece logic.
 
 
 # Given game state information, this function returns a list of potentially valid new positions.

@@ -1,4 +1,4 @@
-# Stores information about one chess piece logic.
+# PieceState stores information about one chess piece.
 
 
 # Properties

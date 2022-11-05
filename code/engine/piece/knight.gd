@@ -1,4 +1,4 @@
-# Knight represents the knight chess piece logic.
+# Knight contains the knight chess piece logic.
 
 
 var movements = [[1, 2], [-1, 2]]

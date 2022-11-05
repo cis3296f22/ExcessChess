@@ -1,4 +1,4 @@
-# King represents the king chess piece logic.
+# King contains the king chess piece logic.
 
 
 # Cardinal directions
