@@ -11,15 +11,12 @@ var rotations = [[1, 0, 0, 1], [0, -1, 1, 0], [-1, 0, 0, -1], [0, 1, -1, 0]]
 var name
 var can_capture
 var must_capture
-var max_length
 
 
-func _init(name_, can_capture_ = true, must_capture_ = false, max_length_= -1):
+func _init(name_, can_capture_ = true, must_capture_ = false):
 	name = name_
 	can_capture = can_capture_
 	must_capture = must_capture_
-	max_length = max_length_
-
 
 # Validates squares for a knight's move and adds them to the list of positions.
 # Arguments:
