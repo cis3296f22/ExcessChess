@@ -24,6 +24,8 @@ func calc_moves(pos, piece, game):
 func add_move(new_move):
 	if (new_move.has_method("add_pos")
 			and "name" in new_move
+			and "can_capture" in new_move
+			and "must_capture" in new_move
 			and _find_move_name(new_move.name) == -1
 	):
 		move_list.append(new_move)

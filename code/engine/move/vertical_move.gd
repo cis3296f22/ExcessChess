@@ -6,11 +6,15 @@ const linear = preload("res://engine/move/linear_move.gd")
 
 # Properties
 var name
+var can_capture
+var must_capture
 var max_length
 
 
-func _init(name_, max_length_=-1):
+func _init(name_, can_capture_ = true, must_capture_ = false, max_length_= -1):
 	name = name_
+	can_capture = can_capture_
+	must_capture = must_capture_
 	max_length = max_length_
 
 # Validates a line of spaces and adds valid spaces to the list of positions.

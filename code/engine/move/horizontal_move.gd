@@ -6,12 +6,17 @@ const linear = preload("res://engine/move/linear_move.gd")
 
 # Properties
 var name
+var can_capture
+var must_capture
 var max_length
 
 
-func _init(name_, max_length_=-1):
+func _init(name_, can_capture_ = true, must_capture_ = false, max_length_= -1):
 	name = name_
+	can_capture = can_capture_
+	must_capture = must_capture_
 	max_length = max_length_
+
 
 # Validates a line of spaces and adds valid spaces to the list of positions.
 # Arguments:
@@ -27,10 +32,10 @@ func add_pos(positions, game, pos, _piece):
 	end = game.width * (pos / game.width + 1)
 	if start < end:
 		linear.add_pos_linear(positions, start, end, 1,
-				game.max_pos, max_length, game.pieces)
+				game.max_pos, max_length, can_capture, must_capture, game.pieces)
 	# Check spaces to the left.
 	start = pos - 1
 	end = game.width * (pos / game.width) - 1
 	if start > end:
 		linear.add_pos_linear(positions, start, end, -1,
-				game.max_pos, max_length, game.pieces)
+				game.max_pos, max_length, can_capture, must_capture, game.pieces)

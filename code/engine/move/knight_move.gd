@@ -9,10 +9,16 @@ var rotations = [[1, 0, 0, 1], [0, -1, 1, 0], [-1, 0, 0, -1], [0, 1, -1, 0]]
 
 # Properties
 var name
+var can_capture
+var must_capture
+var max_length
 
 
-func _init(name_):
+func _init(name_, can_capture_ = true, must_capture_ = false, max_length_= -1):
 	name = name_
+	can_capture = can_capture_
+	must_capture = must_capture_
+	max_length = max_length_
 
 
 # Validates squares for a knight's move and adds them to the list of positions.
@@ -22,6 +28,7 @@ func _init(name_):
 # pos: The original position of the piece.
 # piece: The selected piece's state information.
 func add_pos(positions, game, pos, _piece):
+	var pieces = game.pieces
 	for move in movements:
 		for rot in rotations:
 			var new_pos = (
@@ -33,5 +40,9 @@ func add_pos(positions, game, pos, _piece):
 			if (
 					new_pos >= 0
 					and new_pos <= game.max_pos
+					and (
+							(pieces.has(new_pos) and can_capture)
+							or (not pieces.has(new_pos) and not must_capture)
+					)
 			):
 				positions.append(new_pos)
