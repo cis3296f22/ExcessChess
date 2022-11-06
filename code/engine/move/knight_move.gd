@@ -21,8 +21,7 @@ func _init(name_):
 # game: The game state information.
 # pos: The original position of the piece.
 # piece: The selected piece's state information.
-func add_pos(positions, game, pos, piece):
-	var pieces = game.pieces
+func add_pos(positions, game, pos, _piece):
 	for move in movements:
 		for rot in rotations:
 			var new_pos = (
@@ -34,6 +33,5 @@ func add_pos(positions, game, pos, piece):
 			if (
 					new_pos >= 0
 					and new_pos <= game.max_pos
-					and (not pieces.has(new_pos) or pieces[new_pos].team != piece.team)
 			):
 				positions.append(new_pos)
