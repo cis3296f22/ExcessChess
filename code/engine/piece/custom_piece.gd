@@ -28,6 +28,7 @@ func add_move(new_move):
 	):
 		move_list.append(new_move)
 		return true
+	push_error("A move with name \"" + new_move.name + "\" already exists.")
 	return false
 
 # Removes a move with a particular name from the move list.
