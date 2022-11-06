@@ -13,7 +13,7 @@ var can_capture
 var must_capture
 
 
-func _init(name_, can_capture_ = true, must_capture_ = false):
+func _init(name_ = "L-shaped jump (knight)", can_capture_ = true, must_capture_ = false):
 	name = name_
 	can_capture = can_capture_
 	must_capture = must_capture_

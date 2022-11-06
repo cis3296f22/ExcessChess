@@ -11,7 +11,7 @@ var must_capture
 var max_length
 
 
-func _init(name_, can_capture_ = true, must_capture_ = false, max_length_= -1):
+func _init(name_ = "diagonal SW-NE", can_capture_ = true, must_capture_ = false, max_length_= -1):
 	name = name_
 	can_capture = can_capture_
 	must_capture = must_capture_
