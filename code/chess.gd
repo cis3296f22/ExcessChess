@@ -79,6 +79,7 @@ func tile_clicked(tile: int, state_array, cord_array, highlight_array):
 		#if we selected something that wasn't highlighted, try to highlight again
 		else:
 			do_highlight(tile, moving_team)
+	#game info stored in game_state
 	piece_cord_array = game_state.pieces_cord
 	piece_state_array = game_state.pieces_state
 	
