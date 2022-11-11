@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="Code"
-run/main_scene="res://Hello_World.tscn"
+run/main_scene="res://crafting_menu/CraftingMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Util="*res://Util.gd"
 
 [gui]
 
