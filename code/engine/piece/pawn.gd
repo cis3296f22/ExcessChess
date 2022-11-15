@@ -1,5 +1,5 @@
 # Pawn contains the pawn chess piece logic.
-
+var name = "pawn"
 
 # Given game state information, this function returns a list of potentially valid new positions.
 # Arguments:
@@ -15,12 +15,12 @@ func calc_moves(pos, piece, game):
 
 	# Get forward movements.
 	new_pos = pos + sgn * game.get("width")
-	_add_move(positions, new_pos, game.get("max_pos"), game.pieces)
+	_add_move(positions, new_pos, game.get("max_pos"), game)
 	if not piece.has_moved:
-		_add_move(positions, new_pos + sgn * game.get("width"), game.get("max_pos"), game.pieces)
+		_add_move(positions, new_pos + sgn * game.get("width"), game.get("max_pos"), game)
 	# Get diagonal captures.
-	_add_capture(positions, new_pos + 1, piece, game.pieces)
-	_add_capture(positions, new_pos -1, piece, game.pieces)
+	_add_capture(positions, new_pos + 1, piece, game)
+	_add_capture(positions, new_pos -1, piece, game)
 
 	# TODO Implement en passant validation using prev_move.
 	return positions
@@ -33,8 +33,8 @@ func calc_moves(pos, piece, game):
 # new_pos: The prospective position.
 # max_pos: The maximum position.
 # board_map: The map of board positions and chess pieces.
-func _add_move(positions, new_pos, max_pos, pieces):
-	if not pieces.has(new_pos) and new_pos >= 0 and new_pos <= max_pos:
+func _add_move(positions, new_pos, max_pos, game):
+	if game.state_from_cord(new_pos) == null and new_pos >= 0 and new_pos <= max_pos:
 		positions.append(new_pos)
 
 
@@ -45,6 +45,6 @@ func _add_move(positions, new_pos, max_pos, pieces):
 # new_pos: The prospective position.
 # piece: The state of the moving piece.
 # board: The map of board positions and chess pieces.
-func _add_capture(positions, new_pos, piece, pieces):
-	if pieces.has(new_pos) and pieces[new_pos].team != piece.team:
+func _add_capture(positions, new_pos, piece, game):
+	if game.state_from_cord(new_pos) != null and game.state_from_cord(new_pos).team != piece.team:
 		positions.append(new_pos)

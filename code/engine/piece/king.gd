@@ -4,6 +4,7 @@
 # Cardinal directions
 var directions = [[0, 1], [1,1], [1, 0], [1, -1],
 		[0, -1], [-1, -1], [-1, 0], [-1, 1]]
+var name = "king"
 
 
 # Given game state information, this function returns a list of potentially valid new positions.
@@ -18,8 +19,8 @@ func calc_moves(pos, piece, game):
 
 	# Get basic movements.
 	for dir in directions:
-		var new_pos = pos + dir[0] + dir[1] * game.get("width")
-		_add_move(positions, new_pos, piece.team, game.get("max_pos"), game.pieces)
+		var new_pos = pos + dir[0] + dir[1] * game.width
+		_add_move(positions, new_pos, game.max_pos, piece.team, game)
 
 	# TODO Implement castling validation.
 
@@ -33,10 +34,10 @@ func calc_moves(pos, piece, game):
 # max_pos: The maximum board position.
 # team: The piece's team.
 # pieces: The map of board positions and chess pieces.
-func _add_move(positions, new_pos, max_pos, team, pieces):
+func _add_move(positions, new_pos, max_pos, team, game):
 	if (
 			new_pos >= 0
 			and new_pos <= max_pos
-			and (not pieces.has(new_pos) or pieces[new_pos].team != team)
+			and (game.state_from_cord(new_pos) == null or game.state_from_cord(new_pos).team != team)
 	):
 		positions.append(new_pos)

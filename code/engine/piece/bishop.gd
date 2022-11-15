@@ -4,7 +4,7 @@ extends "res://engine/piece/custom_piece.gd"
 
 var DPosMove = preload("res://engine/move/diagonal_positive_move.gd")
 var DNegMove = preload("res://engine/move/diagonal_negative_move.gd")
-
+var name = "bishop"
 
 func _init():
 	# Add the default bishop moves.

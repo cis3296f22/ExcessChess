@@ -4,7 +4,7 @@
 var movements = [[1, 2], [-1, 2]]
 # Cardinal rotations
 var rotations = [[1, 0, 0, 1], [0, -1, 1, 0], [-1, 0, 0, -1], [0, 1, -1, 0]]
-
+var name = "knight"
 
 # Given game state information, this function returns a list of potentially valid new positions.
 # Arguments:
@@ -15,7 +15,6 @@ var rotations = [[1, 0, 0, 1], [0, -1, 1, 0], [-1, 0, 0, -1], [0, 1, -1, 0]]
 #	Returns an array of positions.
 func calc_moves(pos, piece, game):
 	var positions = []
-	var pieces = game.pieces
 	for move in movements:
 		for rot in rotations:
 			var new_pos = (
@@ -27,7 +26,7 @@ func calc_moves(pos, piece, game):
 			if (
 					new_pos >= 0
 					and new_pos <= game.get("max_pos")
-					and (not pieces.has(new_pos) or pieces[new_pos].team != piece.team)
+					and (not game.has(new_pos) or game.state_from_cord(new_pos).team != piece.team)
 			):
 				positions.append(new_pos)
 	return positions
