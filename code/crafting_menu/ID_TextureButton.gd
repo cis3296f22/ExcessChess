@@ -1,3 +1,6 @@
+
+tool
+
 extends TextureButton
 
 

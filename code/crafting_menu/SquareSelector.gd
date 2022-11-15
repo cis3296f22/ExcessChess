@@ -2,6 +2,7 @@ tool
 extends GridContainer
 
 
+
 export var DEFUALT_WIDTH = 8
 export var DEFUALT_HEIGHT = 8
 var contents = [].resize(DEFUALT_WIDTH*DEFUALT_HEIGHT)
@@ -15,6 +16,7 @@ var black_square = preload("res://assets/board/black_square.png")
 var green_square = preload("res://assets/board/green_square.png")
 
 var ID_TextureButton = preload("res://crafting_menu/ID_TextureButton.tscn")
+
 var pieceFolder = "res://assets/blue and pink chess pieces/pieces/"
 var pieceStrings = ["pawn", "rook", "knight", "bishop","queen", "king"]
 var sideStrings = ["white_", "black_"]
@@ -37,6 +39,7 @@ func _ready():
 			var texture = load(string)
 			piece_textures[side].append(texture)
 	print(piece_textures)
+
 	
 	set_columns(DEFUALT_WIDTH)
 	
@@ -56,6 +59,7 @@ func _ready():
 					x.texture_normal = black_square
 				else:
 					x.texture_normal = white_square
+
 			var rect = Rect2(Vector2(64*j - (48-64)/2,64*i - (96-64)), Vector2(48,96))
 			draw_texture_rect(black_square, rect, true)
 			myBishopCoord.append(rect)
@@ -163,6 +167,7 @@ func child_pressed(bound):
 	print("Child ", bound, " Pressed!")
 	
 	#$"../PieceDrawer".show_child(bound)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
