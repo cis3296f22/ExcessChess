@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
-"class": "game_state",
-"language": "GDScript",
-"path": "res://game_state_tyler.gd"
-}, {
 "base": "Reference",
 "class": "GutHookScript",
 "language": "GDScript",
@@ -23,11 +18,16 @@ _global_script_classes=[ {
 "class": "GutTest",
 "language": "GDScript",
 "path": "res://addons/gut/test.gd"
+}, {
+"base": "Node",
+"class": "game_state",
+"language": "GDScript",
+"path": "res://game_state_tyler.gd"
 } ]
 _global_script_class_icons={
-"game_state": ""
 "GutHookScript": "",
-"GutTest": ""
+"GutTest": "",
+"game_state": ""
 }
 
 [application]
@@ -36,13 +36,13 @@ config/name="Code"
 run/main_scene="res://crafting_menu/CraftingMenu.tscn"
 config/icon="res://icon.png"
 
-[editor_plugins]
-
-enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
-
 [autoload]
 
 Util="*res://Util.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/gut/plugin.cfg" )
 
 [gui]
 
