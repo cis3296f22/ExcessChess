@@ -183,20 +183,21 @@ func remove_moves_that_kill_king(highlights, tile_highlighted):
 	var team = game_state.state_from_cord(tile_highlighted).team
 	var my_king_tile
 	var list_moves_to_remove = []
+	#find the tile the friendly king is one
 	for i in range(0, game_state.pieces_state.size()):
 		if(game_state.pieces_state[i].type == king and game_state.pieces_state[i].team == team):
 			my_king_tile = game_state.pieces_cord[i]
 	var temp_game
+	#copy the game, and do each available move
 	for i in range(0, highlights.size()):
 		temp_game = game_state.copy(Game_state.new(8, 8))
 		temp_game.move(tile_highlighted, highlights[i])
+		#if the move allows the enemy to kill the king, remove the move
 		if(move_kills_king(temp_game, my_king_tile, team)):
 			list_moves_to_remove.append(highlights[i])
+	#here we actually remove the move from our list
 	for i in range(0, list_moves_to_remove.size()):
-		
 		highlights.erase(list_moves_to_remove[i])
-	
-		
 	
 func move_kills_king(temp_game, my_king_tile, team):
 		for j in range(0, temp_game.pieces_state.size()):
