@@ -1,0 +1,164 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://title_screen/buttons/MultiplayerButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://title_screen/buttons/SettingsButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/fade_in.tscn" type="PackedScene" id=3]
+[ext_resource path="res://title_screen/buttons/LogoButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://title_screen/buttons/SinglePlayerButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/game/title-screen.gd" type="Script" id=7]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/chess.jpg-7fe72060868c403f6efcc190691e79a4.stex"
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.03809
+margin_bottom = 1.03809
+script = ExtResource( 7 )
+
+[node name="UIMarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_editor_description_": "// adds 4pts to all custom margins"
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIMarginContainer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 1020.0
+margin_bottom = 596.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UiTopMarginContainer2" type="MarginContainer" parent="UIMarginContainer/VBoxContainer"]
+margin_right = 1016.0
+margin_bottom = 92.0
+custom_constants/margin_right = 12
+custom_constants/margin_top = 12
+custom_constants/margin_left = 12
+__meta__ = {
+"_editor_description_": "// adds 12 pts to LTR custom margins"
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIMarginContainer/VBoxContainer/UiTopMarginContainer2"]
+margin_left = 12.0
+margin_top = 12.0
+margin_right = 1004.0
+margin_bottom = 92.0
+
+[node name="Logo" parent="UIMarginContainer/VBoxContainer/UiTopMarginContainer2/HBoxContainer2" instance=ExtResource( 4 )]
+margin_right = 360.0
+margin_bottom = 80.0
+
+[node name="UiHighMidMarginContainer" type="MarginContainer" parent="UIMarginContainer/VBoxContainer"]
+margin_top = 96.0
+margin_right = 1016.0
+margin_bottom = 344.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 38.08
+__meta__ = {
+"_editor_description_": "// is a blank space for now"
+}
+
+[node name="UiLowMidMarginContainer3" type="MarginContainer" parent="UIMarginContainer/VBoxContainer"]
+margin_top = 348.0
+margin_right = 1016.0
+margin_bottom = 588.0
+custom_constants/margin_right = 12
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 28
+__meta__ = {
+"_editor_description_": "// adds 12-12-16 to LRB custom margins"
+}
+
+[node name="MenuButtonsContainer" type="MarginContainer" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3"]
+margin_left = 12.0
+margin_right = 1004.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 38.08
+
+[node name="CenterRow" type="HBoxContainer" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer"]
+margin_right = 992.0
+margin_bottom = 212.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer/CenterRow"]
+margin_right = 494.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+alignment = 2
+
+[node name="NewGameButton" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer/CenterRow/Buttons" instance=ExtResource( 5 )]
+margin_right = 494.0
+margin_bottom = 60.0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="MultiplayerButton" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer/CenterRow/Buttons" instance=ExtResource( 1 )]
+margin_top = 76.0
+margin_right = 494.0
+margin_bottom = 136.0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="SettingsButton" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer/CenterRow/Buttons" instance=ExtResource( 2 )]
+margin_top = 152.0
+margin_right = 494.0
+margin_bottom = 212.0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer/CenterRow"]
+margin_left = 498.0
+margin_right = 992.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer/CenterRow/HBoxContainer"]
+margin_right = 190.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer/CenterRow/HBoxContainer"]
+margin_left = 194.0
+margin_right = 494.0
+margin_bottom = 212.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer/CenterRow/HBoxContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer/CenterRow/HBoxContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 300.0
+margin_bottom = 212.0
+texture = SubResource( 1 )
+
+[node name="UiBottomHBoxContainer" type="HBoxContainer" parent="UIMarginContainer/VBoxContainer"]
+margin_top = 592.0
+margin_right = 1016.0
+margin_bottom = 592.0
+
+[node name="FadeIn" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
