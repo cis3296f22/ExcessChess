@@ -30,11 +30,11 @@ var has_init = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-func _init():
+func _init(board):
 	var initial_pieces = []
 	var initial_teams = []
 	for i in range(0,16):
-		print(i, initial_pieces_top[i].name)
+		#print(i, initial_pieces_top[i].name)
 		initial_pieces.append(initial_pieces_top[i])
 		initial_teams.append("black")
 	for i in range(0,32):
@@ -53,10 +53,25 @@ func _init():
 		id = id+1
 	for i in range(0, piece_state_array.size()):
 		game_state.add(piece_state_array[i], piece_cord_array[i])
+	print("hi")
+	var children = get_children()
+	for child in children:
+		board = child
+		#print(board)
+		
+	for i in range(0, game_state.pieces_state.size()):
+		var state = game_state.pieces_state[i]
+		var cord = game_state.pieces_cord[i]
+		print(state.texture)
+		board.set_piece(cord, state.texture)
+	
+	
 		
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
 	pass
+
 var tile_highlighted
 var highlights
 var white_turn = true

@@ -38,10 +38,12 @@ func copy(new_game):
 func add(state, cord):
 	pieces_state.append(state)
 	pieces_cord.append(cord)
+
 func has(cord: int):
 	if state_from_cord(cord) == null:
 		return false
 	return true
+
 func remove(index):
 	pieces_cord.remove(index)
 	pieces_state.remove(index)
