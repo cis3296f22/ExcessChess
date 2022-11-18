@@ -26,6 +26,8 @@ margin_left = 48.0
 margin_top = 435.0
 margin_right = 252.0
 margin_bottom = 459.0
+placeholder_text = "enter name of board"
+placeholder_alpha = 0.4
 
 [node name="LoadButton" type="Button" parent="NameInput"]
 margin_left = 14.0
