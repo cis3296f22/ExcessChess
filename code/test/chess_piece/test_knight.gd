@@ -32,13 +32,37 @@ func test_knight_full():
 	var expected = [1, 3, 8, 12, 24, 28, 33, 35]
 	var result
 
-	# Add knight to the middle of the board.
+	# Add knight to c6.
 	game_state.add(knight_state, 18)
 
-	# Calculate the knight's moves.
 	result = knight_logic.calc_moves(18, knight_state, game_state)
 
-	# Check the results against the expected output.
+	_assert_eq_positions(result, expected)
+
+
+# Tests the movement of a knight near the edge of the board.
+func test_knight_edge():
+	var expected = [10, 17]
+	var result
+
+	# Add knight to a8.
+	game_state.add(knight_state, 0)
+
+	result = knight_logic.calc_moves(0, knight_state, game_state)
+
+	_assert_eq_positions(result, expected)
+
+	# Move knight to h4.
+	game_state.move(0, 39)
+
+	expected = [22, 29, 45, 54]
+
+	result = knight_logic.calc_moves(39, knight_state, game_state)
+
+	_assert_eq_positions(result, expected)
+
+
+func _assert_eq_positions(result, expected):
 	assert_eq(result.size(), expected.size(), "Number of positions should be equal.")
 	for pos in expected:
 		assert_has(result, pos, "Result should contain position " + str(pos))
