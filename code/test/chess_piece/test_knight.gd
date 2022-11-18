@@ -40,6 +40,23 @@ func test_knight_full():
 	_assert_eq_positions(result, expected)
 
 
+# Tests the movement of a knight blocked by friendly pieces.
+func test_knight_blocked():
+	var block = [1, 3, 8, 12, 24, 28, 33, 35]
+	var result
+
+	# Add knight to c6.
+	game_state.add(knight_state, 18)
+
+	# Add duplicate knight states to block all of its moves.
+	for pos in block:
+		game_state.add(knight_state, pos)
+
+	result = knight_logic.calc_moves(18, knight_state, game_state)
+
+	assert_eq(result.size(), 0, "Result should be empty.")
+
+
 # Tests the movement of a knight near the edge of the board.
 func test_knight_edge():
 	var expected = [10, 17]

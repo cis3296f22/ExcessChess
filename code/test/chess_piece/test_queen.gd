@@ -41,6 +41,23 @@ func test_queen_eight_directions():
 	_assert_eq_positions(result, expected)
 
 
+# Tests the movement of a queen blocked by friendly pieces.
+func test_queen_blocked():
+	var block = [17, 19, 10, 26, 9, 11, 25, 27]
+	var result
+
+	# Add queen to c6.
+	game_state.add(queen_state, 18)
+
+	# Add duplicate queen states to block all of its moves.
+	for pos in block:
+		game_state.add(queen_state, pos)
+
+	result = queen_logic.calc_moves(18, queen_state, game_state)
+
+	assert_eq(result.size(), 0, "Result should be empty.")
+
+
 # Tests the movement of a queen at the edge of the board.
 func test_queen_edge():
 	var expected = [1, 2, 3, 4, 5, 6, 7, 8, 16, 24, 32, 40, 48, 56,

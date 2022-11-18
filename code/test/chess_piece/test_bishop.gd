@@ -40,6 +40,23 @@ func test_bishop_four_directions():
 	_assert_eq_positions(result, expected)
 
 
+# Tests the movement of a bishop blocked by friendly pieces.
+func test_bishop_blocked():
+	var block = [9, 11, 25, 27]
+	var result
+
+	# Add bishop to c6.
+	game_state.add(bishop_state, 18)
+
+	# Add duplicate bishop states to block all of its moves.
+	for pos in block:
+		game_state.add(bishop_state, pos)
+
+	result = bishop_logic.calc_moves(18, bishop_state, game_state)
+
+	assert_eq(result.size(), 0, "Result should be empty.")
+
+
 # Tests the movement of a bishop at the edge of the board.
 func test_bishop_edge():
 	var expected = [25, 18, 11, 4, 41, 50, 59]
