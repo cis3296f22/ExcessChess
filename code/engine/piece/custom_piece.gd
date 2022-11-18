@@ -4,6 +4,8 @@
 var move_list = []
 
 
+
+
 # Given game state information, this function returns a list of potentially valid new positions.
 # Arguments:
 # positions: 

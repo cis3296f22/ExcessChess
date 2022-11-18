@@ -9,9 +9,11 @@ signal tile_clicked(tile)
 #Cont.
 func _ready():
 	$SquareSelector.connect("tile_clicked",self,"tile_selected")
+
 #Cont.
 func tile_selected(tile):
 	emit_signal("tile_clicked",tile)
+	#print("board emitting tile clicked")
 
 #Given a location and a texture, update the pice there
 #Use null for no piece
@@ -25,6 +27,7 @@ func as_string():
 #Set the higlight overlay on a certain tile. Default collor is a yellow.
 #Use any color with the last value (the alpha) set to 0 to clear. For example, Color(0,0,0,0) is "Transparent black"
 func highlight_square(child:int, color:Color = Color(1,1,0,0.75)):
+	#print("board is highlighting square:", child, " color: ", color)
 	$HighlightTiles.highlight_square(child, color)
 
 

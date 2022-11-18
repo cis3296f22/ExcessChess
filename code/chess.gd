@@ -26,11 +26,14 @@ var initial_pieces_bottom = [
 var piece_state_array = []
 var piece_cord_array = []
 var has_init = false
+var board
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-func _init(board):
+func _init(_board):
+	board = _board
+	board.connect("tile_clicked", self, "tile_clicked")
 	var initial_pieces = []
 	var initial_teams = []
 	for i in range(0,16):
@@ -62,7 +65,7 @@ func _init(board):
 	for i in range(0, game_state.pieces_state.size()):
 		var state = game_state.pieces_state[i]
 		var cord = game_state.pieces_cord[i]
-		print(state.texture)
+		print(state.texture.get_width())
 		board.set_piece(cord, state.texture)
 	
 	
@@ -74,8 +77,11 @@ func _ready():
 
 var tile_highlighted
 var highlights
+var possible_passeant_highlighted = []
+var possible_passeant_attacked_piece = []
 var white_turn = true
-func tile_clicked(tile: int, state_array, cord_array, highlight_array):
+func tile_clicked(tile: int):#, state_array, cord_array, highlight_array
+	#print("chess got click")
 	var moving_team
 	if(white_turn):
 		moving_team = "white"
@@ -88,23 +94,50 @@ func tile_clicked(tile: int, state_array, cord_array, highlight_array):
 	else:
 		#if a piece has been chosen, and we selected a correct tile, do the move
 		if highlights.has(tile):
-			move_piece(tile_highlighted, tile)
+			if(possible_passeant_highlighted.has(tile)):
+				var index = possible_passeant_highlighted.find(tile, 0)
+				game_state.passeant_move(tile_highlighted, tile, possible_passeant_attacked_piece[index])
+				if(white_turn):
+					white_turn = false
+				else:
+					white_turn = true
+			else:
+				move_piece(tile_highlighted, tile)
 			tile_highlighted = null
 			highlights = []
+			possible_passeant_highlighted = []
+			possible_passeant_attacked_piece = []
 		#if we selected something that wasn't highlighted, try to highlight again
 		else:
 			do_highlight(tile, moving_team)
+			
+	check_for_promotion()
 	#game info stored in game_state
 	piece_cord_array = game_state.pieces_cord
 	piece_state_array = game_state.pieces_state
 	
-	
 	#this is sending the data to the drawer
+	for i  in range(0, 64):
+		board.set_piece(i, null)
+	
 	for i in range(0, piece_cord_array.size()):
-		cord_array.append(piece_cord_array[i])
-		state_array.append(piece_state_array[i])
+		var cord = (piece_cord_array[i])
+		var state = (piece_state_array[i])
+		board.set_piece(cord, state.texture)
+		
+		#cord_array.append(piece_cord_array[i])
+		#state_array.append(piece_state_array[i])
+	board.clear_highlights()
 	for i in range(0, highlights.size()):
-		highlight_array.append(highlights[i])
+		#print("highlighting square: ", highlights[i])
+		board.highlight_square(highlights[i])
+
+func check_for_promotion():
+	var state_temp = piece_state_class.new(1, "white", pawn)
+	for i in range(0, 7):
+		if game_state.has_specific_type(i, state_temp):
+			game_state.state_from_cord(i).change_type(queen)
+			return
 
 #returns whether a tile is highlighted
 func highlighted(tile: int, highlights):
@@ -137,6 +170,10 @@ func get_moves_of_piece(tile: int, game):
 	if state == null:
 		return []
 	var moves = state.type.calc_moves(tile, state, game)
+	if state.type.name == "pawn":
+		if state.type.passeant_move_list.size() != 0:
+			possible_passeant_highlighted = state.type.passeant_move_list
+			possible_passeant_attacked_piece = state.type.passeant_attack_list
 	#print(moves)
 	return moves
 

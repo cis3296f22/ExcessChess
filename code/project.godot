@@ -8,20 +8,10 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Node",
-"class": "game_state",
-"language": "GDScript",
-"path": "res://game_state_tyler.gd"
-} ]
-_global_script_class_icons={
-"game_state": ""
-}
-
 [application]
 
 config/name="Code"
-run/main_scene="res://crafting_menu/CraftingMenu.tscn"
+run/main_scene="res://Chess.tscn"
 config/icon="res://icon.png"
 
 [autoload]
