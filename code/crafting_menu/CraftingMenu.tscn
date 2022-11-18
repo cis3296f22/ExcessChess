@@ -20,3 +20,23 @@ margin_left = 281.0
 margin_top = 22.0
 margin_right = 281.0
 margin_bottom = 22.0
+
+[node name="NameInput" type="LineEdit" parent="."]
+margin_left = 48.0
+margin_top = 435.0
+margin_right = 252.0
+margin_bottom = 459.0
+
+[node name="LoadButton" type="Button" parent="NameInput"]
+margin_left = 14.0
+margin_top = 40.0
+margin_right = 69.0
+margin_bottom = 60.0
+text = "Load"
+
+[node name="SaveButton" type="Button" parent="NameInput"]
+margin_left = 109.0
+margin_top = 40.0
+margin_right = 163.0
+margin_bottom = 60.0
+text = "Save"

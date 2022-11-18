@@ -47,31 +47,79 @@ func as_string():
 		else:
 			var tex = piece.texture.load_path
 			if("white_pawn" in tex):
-				result += "wp "
+				result += "white_pawn "
 			elif("white_rook" in tex):
-				result += "wr "
+				result += "white_rook "
 			elif("white_knight" in tex):
-				result += "wk "
+				result += "white_knight "
 			elif("white_bishop" in tex):
-				result += "wb "
+				result += "white_bishop "
 			elif("white_king" in tex):
-				result += "wk "
+				result += "white_king "
 			elif("white_queen" in tex):
-				result += "wq "
+				result += "white_queen "
 		#Black pieces
 			elif("black_pawn" in tex):
-				result += "bp "
+				result += "black_pawn "
 			elif("black_rook" in tex):
-				result += "br "
+				result += "black_rook "
 			elif("black_knight" in tex):
-				result += "bk "
+				result += "black_knight "
 			elif("black_bishop" in tex):
-				result += "bb "
+				result += "black_bishop "
 			elif("black_king" in tex):
-				result += "bk "
+				result += "black_king "
 			elif("black_queen" in tex):
-				result += "bq "
+				result += "black_queen "
 		#unknown
 			else:
 				result += "_ "
 	return result
+
+
+func from_string(string):
+	#split the string by whitespace. See:
+	# https://github.com/godotengine/godot/issues/29554#issuecomment-500126883
+	var r = RegEx.new()
+	r.compile("\\S+") # negated whitespace character class
+	var count = -2 #So forst peice will be 0
+	for m in r.search_all(string):
+		var token = m.get_string()
+		
+		if(count < 0): #Len and width
+			count += 1
+			continue #TODO: resize/validate based on these values.
+		
+		if token == "_":
+			show_child(count,null)
+		elif token == "white_pawn":
+			show_child(count, Util.white_pawn_tex)
+		elif token == "white_rook":
+			show_child(count, Util.white_rook_tex)
+		elif token == "white_knight":
+			show_child(count, Util.white_knight_tex)
+		elif token == "white_bishop":
+			show_child(count, Util.white_bishop_tex)
+		elif token == "white_king":
+			show_child(count, Util.white_king_tex)
+		elif token == "white_queen":
+			show_child(count, Util.white_queen_tex)
+	#Black pieces
+		elif token == "black_pawn":
+			show_child(count, Util.black_pawn_tex)
+		elif token == "black_rook":
+			show_child(count, Util.black_rook_tex)
+		elif token == "black_knight":
+			show_child(count, Util.black_knight_tex)
+		elif token == "black_bishop":
+			show_child(count, Util.black_bishop_tex)
+		elif token == "black_king":
+			show_child(count, Util.black_king_tex)
+		elif token == "black_queen":
+			show_child(count, Util.black_queen_tex)
+	#unknown
+		else:
+			show_child(count, null)
+		
+		count += 1
+	#End loop

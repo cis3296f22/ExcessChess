@@ -22,6 +22,10 @@ func set_piece(tile, piece):
 func as_string():
 	return $PieceDrawer.as_string()
 
+#Replace the contents of the board using a string to specify piece layout
+func from_string(string):
+	$PieceDrawer.from_string(string)
+
 #Set the higlight overlay on a certain tile. Default collor is a yellow.
 #Use any color with the last value (the alpha) set to 0 to clear. For example, Color(0,0,0,0) is "Transparent black"
 func highlight_square(child:int, color:Color = Color(1,1,0,0.75)):
