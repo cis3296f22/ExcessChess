@@ -3,16 +3,29 @@ extends Control
 
 #This class manages/echos the children
 
+var clickable = true
+var new_game
+
+
 #Echo the signal from the buttons
 signal tile_clicked(tile)
 
 #Cont.
 func _ready():
+	if get_tree().has_network_peer ():
+		$HUD/MenuBox.visible = true
+		$HUD/Remind.visible = true
+		
+	multiplayer_configs()	
+	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
+	get_tree().connect("server_disconnected", self, "announcement", ["opponent disconnected"])
 	$SquareSelector.connect("tile_clicked",self,"tile_selected")
+	
 
 #Cont.
 func tile_selected(tile):
 	emit_signal("tile_clicked",tile)
+	$HUD/Remind.visible = false
 	#print("board emitting tile clicked")
 
 #Given a location and a texture, update the pice there
@@ -37,6 +50,109 @@ func clear_highlights():
 	#TODO: Add a clear_highight function to remove all highlights
 
 #TODO: add a fill_board function to take a list of textures and automatically apply them to the board. 
+
+
+
+func draw_offer():
+	clickable = false
+	$HUD/MenuBox.visible = false
+	$HUD/DrawOffer.visible = true
+	$HUD/Announcement.visible = true
+	$HUD/Announcement/Announcement.text = 'Do You Accept a Draw?'
+
+func game_over (message):
+	clickable = false
+	$HUD/MenuBox.visible = false
+	$HUD/BackPanel.visible = false
+	$HUD/Announcement/Announcement.text = message
+	$HUD/Announcement.visible = true
+	$HUD/EndGame.visible = true
+	
+func _on_Surrender_pressed():
+	$HUD/Remind.visible = false
+	game_over('You have surrendered')
+	rpc( 'game_over', 'The oppenent has surrendered')
+
+func _on_Draw_pressed():
+	$HUD/Remind.visible = false
+	clickable = false
+	$HUD/MenuBox.visible = true
+	rpc ('draw_offer')
+	
+func _on_Accept_pressed():
+	$HUD/DrawOffer.visible = false
+	game_over('You get a Draw')
+	rpc( 'game_over', 'You have a DRAW')
+
+func _on_Decline_pressed():
+	$HUD/DrawOffer.visible = false
+	$HUD/MenuBox.visible = true
+	$HUD/Announcement.visible = false
+	clickable = true
+	rpc ('announcement', 'Your draw request has declined')
+	
+func announcement(text):
+	if get_tree().has_network_peer ():
+		var timer = Timer.new()
+		$HUD/Announcement.visible = true
+		$HUD/Announcement/Announcement.text = text
+		clickable = false
+		timer.wait_time = 2
+		timer.one_shot = true
+		add_child(timer)
+		timer.start()
+		
+func _player_disconnected(_id):
+	announcement ("opponent disconnected")
+
+
+
+func reload_scene():
+	get_tree().reload_current_scene()
+
+func reload_client():
+	rpc ('reload_scene')
+	reload_scene()
+
+func _on_Restart_pressed():
+	if get_tree().has_network_peer ():
+		if new_game:
+			if get_tree().is_network_server():
+				rpc ('reload_client')
+
+			elif not get_tree().is_network_server():
+				rpc ('reload_scene')
+				reload_scene()
+
+		else:
+			$HUD/Announcement/Announcement.text = 'Re-start request sent'
+			rset ('new_game', true)
+
+func end_game ():
+	if get_tree().has_network_peer ():
+		get_tree().set_network_peer(null)
+	get_tree().change_scene("res://crafting_menu/Menu.tscn")
+
+func _on_Exit_pressed():
+	end_game()
+
+
+func _on_BackPanel_pressed():
+	get_tree().change_scene("res://crafting_menu/Menu.tscn")
+	
+func multiplayer_configs ():
+	rpc_config("game_over", 1)
+	rpc_config("draw_offer", 1)
+	rpc_config("announcement", 1)
+	rpc_config("reload_scene", 1)
+	rpc_config("reload_client", 1)
+	
+	rset_config("new_game", 1)
+	rset_config("clickable", 1)
+
+
+
+
 
 
 
