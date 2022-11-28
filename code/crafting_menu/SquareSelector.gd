@@ -51,11 +51,23 @@ func _setup():
 
 
 func child_pressed(child_id):
+	multiplayer_configs ()
 #	print("Child ", child_id, " Pressed!")
 	#print("emitting signal child clicked")
+	rpc("synmultiplayer", child_id)
 	emit_signal("tile_clicked", child_id)
+	rpc("synmultiplayer", child_id)
 	
 #	$"../PieceDrawer".show_child(child_id, null)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func multiplayer_configs ():
+	rpc_config("synmultiplayer", 1)
+	rpc_config("child_pressed", 1)
+	
+	rset_config("child_id", 1)
+
+func synmultiplayer(child_id):
+	emit_signal("tile_clicked", child_id)
