@@ -25,10 +25,10 @@ func calc_moves(pos, piece, game):
 	# Get diagonal captures.
 	_add_capture(positions, new_pos + 1, piece, game)
 	_add_capture(positions, new_pos -1, piece, game)
-	
+	#new_pos is 2 blocks forward
 	_add_passeant_capture(positions, new_pos + 1, pos + 1, piece, game)
 	_add_passeant_capture(positions, new_pos - 1, pos - 1, piece, game)
-
+	
 	# TODO Implement en passant validation using prev_move.
 	return positions
 	pass
@@ -64,4 +64,5 @@ func _add_passeant_capture(positions, new_pos, attack_pos, piece, game):
 			positions.append(new_pos)
 			passeant_move_list.append(new_pos)
 			passeant_attack_list.append(attack_pos)
+			var attacked_piece = game.state_from_cord(attack_pos)
 			

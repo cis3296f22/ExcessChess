@@ -3,7 +3,7 @@
 [ext_resource path="res://title_screen/buttons/MenuButton.tscn" type="PackedScene" id=1]
 
 [node name="SettingsButton" instance=ExtResource( 1 )]
-scene_to_load = "res://scenes/game/Settings.tscn"
 
 [node name="Label" parent="." index="0"]
-text = "Settings"
+text = "Settings
+"

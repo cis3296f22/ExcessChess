@@ -20,6 +20,7 @@ func resize(width, height):
 	_setup()
 
 func _setup():
+	print("in setup of piecedrawer")
 	var tile_size = Vector2(green_square.get_width(), green_square.get_height())
 	var piece_size = Vector2(pawn.get_width(),pawn.get_height())
 	#The amount of space to include on each size of the piece, to center it in a square

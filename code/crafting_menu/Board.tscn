@@ -8,6 +8,7 @@
 [ext_resource path="res://fonts/Helvetica-Bold-36.tres" type="DynamicFont" id=6]
 
 [node name="Board" type="Control"]
+rect_min_size = Vector2( 512, 512 )
 script = ExtResource( 1 )
 
 [node name="SquareSelector" type="GridContainer" parent="."]

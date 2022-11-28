@@ -7,6 +7,7 @@ func _ready():
 	for button in $UIMarginContainer/VBoxContainer/UiLowMidMarginContainer3/MenuButtonsContainer/CenterRow/Buttons.get_children():
 		button.connect("pressed", self, "_on_Button_pressed", [button])
 	  
+	
 func _on_Button_pressed(button):
 	scene_path_to_load = button.scene_to_load
 	print(button.scene_to_load)
@@ -17,5 +18,6 @@ func _on_Button_pressed(button):
 	$UIMarginContainer.hide()
 	#get_tree().change_scene(scene_path_to_load)
 func _on_FadeIn_fade_finished():
-	print("chaning scene")
+	print("changing scene")
 	get_tree().change_scene(scene_path_to_load)
+	
