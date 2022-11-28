@@ -52,7 +52,9 @@ func _setup():
 
 func child_pressed(child_id):
 #	print("Child ", child_id, " Pressed!")
+	#print("emitting signal child clicked")
 	emit_signal("tile_clicked", child_id)
+	
 #	$"../PieceDrawer".show_child(child_id, null)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

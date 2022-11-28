@@ -10,8 +10,9 @@ Adding an screenshot or a mockup of your application in action would be nice.
 3. Double-click the executable (or enter its path name in a terminal) to start the game.
 4. Use the mouse to interact with the in-game window.
 ### How to build
+You will need more than 630 MB of free disk space, excluding this project itself.
 1. Run the Godot Engine v3.5.1.
-    - Download the archive for your operating system. ([GodotEngine.org](https://godotengine.org/download) | [GitHub Releases](https://github.com/godotengine/godot/releases/tag/3.5.1-stable))
+    - Download the archive for your operating system from [GodotEngine.org](https://godotengine.org/download) or [GitHub Releases](https://github.com/godotengine/godot/releases/tag/3.5.1-stable). Download size and total size are each less than 100 MB.
     - Extract the archive.
     - Run the godot executable, for example double-clicking the "Godot_v3.5.1-stable_win64.exe" file.
 2. Import the project into godot.
@@ -22,15 +23,21 @@ Adding an screenshot or a mockup of your application in action would be nice.
     - Select the new "Browse" option that appears.
     - Navigate to and select an empty folder to install the project.
     - Click "Import & Edit."
-3. Export the project to an executable binary.
-    - In the top-level, select "Project".
+3. Download and install the standard export templates.
+    - In the top-level menu, select "Editor."
+    - Click "Manage Export Templates..."
+    - Click "Download and Install." Total size is 549.4 MB.
+    - After the installation finishes, click "Close."
+4. Export the project to an executable binary.
+    - In the top-level menu, select "Project."
     - Select "Export..."
     - Across from Presets, select "Add."
-    - Choose your operating system (Additional setup may be required).
+    - Choose your operating system.
+        - Additional setup may be required for [macOS](https://docs.godotengine.org/en/3.5/tutorials/export/exporting_for_macos.html), [iOS](https://docs.godotengine.org/en/3.5/tutorials/export/exporting_for_ios.html), or [Android](https://docs.godotengine.org/en/3.5/tutorials/export/exporting_for_android.html).
     - Select "Export Project..."
     - Navigate to select the location and name for the new executable.
     - Click "Save."
-4. Close godot
+5. Close godot.
     - Click "Close."
     - In the top-level menu, select "Scene."
     - Press "Quit."
