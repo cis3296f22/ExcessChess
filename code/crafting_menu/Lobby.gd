@@ -88,3 +88,6 @@ func _on_Address_text_entered(_new_text):
 func _on_Local_pressed():
 	get_tree().set_network_peer(null)
 	get_tree().change_scene("res://Chess.tscn")
+
+func _on_Back_pressed():
+	get_tree().change_scene("res://scenes/TitleScreen.tscn")
