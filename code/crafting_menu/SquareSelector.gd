@@ -3,8 +3,8 @@ extends GridContainer
 
 signal tile_clicked(tile_id)
 
-export var DEFUALT_WIDTH = 8
-export var DEFUALT_HEIGHT = 8
+var WIDTH = 8
+var HEIGHT = 8
 
 var white_square = preload("res://assets/board/white_square.png")
 var black_square = preload("res://assets/board/black_square.png")
@@ -14,13 +14,26 @@ var ID_TextureButton = preload("res://crafting_menu/ID_TextureButton.tscn")
 
 
 func _ready():
+	_setup()
+
+func resize(width, height):
+	WIDTH = width
+	HEIGHT = height
+	_setup()
+
+func _setup():
+	set_columns(WIDTH)
+
 	
-	set_columns(DEFUALT_WIDTH)
+	#Throw out any existing children
+	for n in get_children():
+		n.queue_free()
 	
-	for i in range(DEFUALT_HEIGHT):
-		for j in range(DEFUALT_WIDTH):
+	
+	for i in range(HEIGHT):
+		for j in range(WIDTH):
 			var x = ID_TextureButton.instance()
-			x.set_id( (i*DEFUALT_WIDTH) + j)
+			x.set_id( (i*WIDTH) + j)
 			x.texture_hover = green_square
 
 			if (i%2) == 0: #First, third, etc row- start with white

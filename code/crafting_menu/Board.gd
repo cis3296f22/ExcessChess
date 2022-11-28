@@ -9,9 +9,38 @@ signal tile_clicked(tile)
 #Cont.
 func _ready():
 	$SquareSelector.connect("tile_clicked",self,"tile_selected")
+	_set_rect_size_from_tiles()
+	
+	connect("resized", self, "was_resized")
+	was_resized() #Update based on initial conditions
+	
+
+func was_resized():
+	yield(get_tree(),"idle_frame")
+	var factors = rect_size / _get_rect_size_from_tiles()
+	var scale_factor = min(factors.x, factors.y)
+	rect_scale = Vector2(scale_factor, scale_factor)
+#	print("Set rect scale to ", rect_size / _get_rect_size_from_tiles())
+
+func _get_rect_size_from_tiles():
+	var w = $SquareSelector.white_square.get_width()
+	var h = $SquareSelector.white_square.get_height()
+	var _size = Vector2(w*$SquareSelector.WIDTH,h*$SquareSelector.HEIGHT)
+	return _size
+
+func _set_rect_size_from_tiles():
+	rect_min_size = _get_rect_size_from_tiles()
+
 #Cont.
 func tile_selected(tile):
 	emit_signal("tile_clicked",tile)
+
+func resize(width, height):
+	$SquareSelector.resize(width,height)
+	$HighlightTiles.resize(width,height)
+	$PieceDrawer.resize(width,height)
+	_set_rect_size_from_tiles()
+	was_resized()
 
 #Given a location and a texture, update the pice there
 #Use null for no piece

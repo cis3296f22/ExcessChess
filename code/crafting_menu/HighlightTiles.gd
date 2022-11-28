@@ -2,19 +2,33 @@ tool
 extends GridContainer
 
 #Todo: inherit sizes from board
-export var DEFUALT_WIDTH = 8
-export var DEFUALT_HEIGHT = 8
+var WIDTH = 8
+var HEIGHT = 8
 
-var contents = [] #.resize(DEFUALT_WIDTH*DEFUALT_HEIGHT)
+var contents = [] #.resize(WIDTH*HEIGHT)
 
 var white_square = preload("res://assets/board/white_square.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_columns(DEFUALT_WIDTH)
+	_setup()
+
+
+func resize(width, height):
+	WIDTH = width
+	HEIGHT = height
+	_setup()
+
+func _setup():
+	set_columns(WIDTH)
 	
-	for _i in range(DEFUALT_HEIGHT):
-		for _j in range(DEFUALT_WIDTH):
+	#Throw out any existing children
+	for n in get_children():
+		n.queue_free()
+	contents = []
+	
+	for _i in range(HEIGHT):
+		for _j in range(WIDTH):
 			var x = TextureRect.new()
 			x.texture = white_square
 			x.set_mouse_filter(Control.MOUSE_FILTER_IGNORE) #Allow clicks on the button below
