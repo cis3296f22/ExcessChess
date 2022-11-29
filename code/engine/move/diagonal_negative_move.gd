@@ -25,12 +25,10 @@ func add_pos(positions, pos, piece, game):
 	# Check spaces down-left from origin.
 	start = pos + game.width - 1
 	end = pos + 1 + (game.width - 1) * min(file, game.height - rank - 1)
-	printerr("DL< range: " + str(pos) + "," + str(start) + "," + str(end))
 	if start < end:
 		linear.add_pos_linear(positions, start, end, game.width - 1, piece.team, game)
 	# Check spaces up-right from origin.
 	start = pos - game.width + 1
 	end = pos - 1 - (game.width - 1) * min(game.width - file - 1, rank)
-	printerr("UR> range: " + str(pos) + "," + str(start) + "," + str(end))
 	if start > end:
 		linear.add_pos_linear(positions, start, end, 1 - game.width, piece.team, game)

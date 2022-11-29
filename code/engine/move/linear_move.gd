@@ -10,9 +10,7 @@
 # game: The game state.
 static func add_pos_linear(positions, start, end, step, team, game):
 	# Check spaces in one direction from the origin.
-	printerr(range(start, end, step))
 	for new_pos in range(start, end, step):
-		printerr("checking " + str(new_pos))
 		if not game.has(new_pos):
 			# Add position if it is in bounds.
 			if new_pos >= 0 and new_pos <= game.max_pos:
