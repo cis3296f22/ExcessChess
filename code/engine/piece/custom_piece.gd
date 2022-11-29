@@ -25,8 +25,8 @@ func calc_moves(pos, piece, game):
 #	Returns true if successful.
 func add_move(new_move):
 	if (new_move.has_method("add_pos")
-			and new_move.has_method("getName")
-			and _find_move_name(new_move.getName() != -1)
+			and "name" in new_move
+			and _find_move_name(new_move.get("name")) == -1
 	):
 		move_list.append(new_move)
 		return true
@@ -46,7 +46,7 @@ func remove_move(name):
 func get_move_names():
 	var move_names = []
 	for move in move_list:
-		move_names.append(move.getName())
+		move_names.append(move.get("name"))
 	return move_names
 
 # Checks if a particular name exists in the move list.
@@ -54,6 +54,6 @@ func get_move_names():
 #	Returns its position if found, otherwise -1.
 func _find_move_name(name):
 	for i in move_list.size():
-		if move_list[i].getName == name:
+		if move_list[i].get("name") == name:
 			return i
 	return -1

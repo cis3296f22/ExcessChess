@@ -19,8 +19,15 @@ func calc_moves(pos, piece, game):
 
 	# Get basic movements.
 	for dir in directions:
-		var new_pos = pos + dir[0] + dir[1] * game.width
-		_add_move(positions, new_pos, game.max_pos, piece.team, game)
+		# Check if the direction is in bounds.
+		if(
+			(pos % game.width) + dir[0] >= 0
+			and (pos % game.width) + dir[0] < game.width
+			and (pos / game.width) + dir[1] >= 0
+			and (pos / game.width) + dir[1] < game.height
+		):
+			var new_pos = pos + dir[0] + dir[1] * game.width
+			_add_move(positions, new_pos, game.max_pos, piece.team, game)
 
 	# TODO Implement castling validation.
 
