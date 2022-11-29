@@ -35,11 +35,7 @@ func add_pos(positions, pos, piece, game):
 					and (pos / game.width) + delta_y < game.height
 			):
 				# Calculate the new position.
-				var new_pos = (
-						pos
-						+ delta_x
-						+ delta_y * game.width
-				)
+				var new_pos = pos + delta_x + delta_y * game.width
 				if (
 						new_pos >= 0
 						and new_pos <= game.max_pos
