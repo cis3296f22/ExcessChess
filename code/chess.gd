@@ -34,7 +34,6 @@ var board_height
 # var a = 2
 # var b = "text"
 func from_string(initial_pieces, initial_teams, string):
-	
 	#split the string by whitespace. See:
 	# https://github.com/godotengine/godot/issues/29554#issuecomment-500126883
 	var r = RegEx.new()
@@ -122,7 +121,6 @@ func from_string(initial_pieces, initial_teams, string):
 	#End loop
 	board_width = w
 	board_height = h
-	board.resize(w, h)
 	
 
 func setup_setup_default_pieces(initial_pieces, initial_teams):
