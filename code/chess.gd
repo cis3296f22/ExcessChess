@@ -123,6 +123,7 @@ func from_string(initial_pieces, initial_teams, string):
 	board_width = w
 	board_height = h
 	board.resize(w, h)
+	game_state = Game_state.new(w, h)
 	
 
 func setup_setup_default_pieces(initial_pieces, initial_teams):
