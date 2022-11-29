@@ -1,9 +1,7 @@
 # Excess Chess
 Two people can use Excess Chess to play a standard game of chess over the internet, but Excess Chess can do much more. As a chess sandbox, many aspects of the game are configurable. Have you ever wondered what it would be like to have twice as many pawns? Have you ever wondered how chess would be if the board was twice as long? Have you ever thought "I bet I could beat my friend if I had a couple extra knights?" Now you can find out! The board dimensions (length and width) and the piece layout are fully customizable, and can be saved for later matches so you can revisit your favorite setups. With Excess Chess, you can experience fun, novel, and absurd varieties of chess with friends and family.
 
-Adding an screenshot or a mockup of your application in action would be nice.  
-
-![This is a screenshot.](images.png)
+![Image of the setup mode.](images.png)
 # How to run   
 1. Download the latest binary for your operating system from the [Release](https://github.com/cis3296f22/ExcessChess/releases) section on GitHub, or see "How to build" below.
 2. Find the executable using your file explorer or terminal.
