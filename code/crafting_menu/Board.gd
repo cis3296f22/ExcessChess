@@ -17,13 +17,18 @@ func _ready():
 		$HUD/Remind.visible = true
 		
 	multiplayer_configs()	
+# warning-ignore:return_value_discarded
 	get_tree().connect("network_peer_disconnected", self, "_player_disconnected")
+# warning-ignore:return_value_discarded
 	get_tree().connect("server_disconnected", self, "announcement", ["opponent disconnected"])
+# warning-ignore:return_value_discarded
 	$SquareSelector.connect("tile_clicked",self,"tile_selected")
 	
 
-	_set_rect_size_from_tiles()
+	rect_min_size = Vector2(520,520)
+#	_set_rect_size_from_tiles()
 	
+# warning-ignore:return_value_discarded
 	connect("resized", self, "was_resized")
 	was_resized() #Update based on initial conditions
 	
@@ -41,8 +46,8 @@ func _get_rect_size_from_tiles():
 	var _size = Vector2(w*$SquareSelector.WIDTH,h*$SquareSelector.HEIGHT)
 	return _size
 
-func _set_rect_size_from_tiles():
-	rect_min_size = _get_rect_size_from_tiles()
+#func _set_rect_size_from_tiles():
+#	rect_min_size = _get_rect_size_from_tiles()
 
 
 #Cont.
@@ -55,7 +60,7 @@ func resize(width, height):
 	$SquareSelector.resize(width,height)
 	$HighlightTiles.resize(width,height)
 	$PieceDrawer.resize(width,height)
-	_set_rect_size_from_tiles()
+#	_set_rect_size_from_tiles()
 	was_resized()
 
 #Given a location and a texture, update the pice there
@@ -142,6 +147,7 @@ func _player_disconnected(_id):
 
 
 func reload_scene():
+# warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
 
 func reload_client():
@@ -165,6 +171,7 @@ func _on_Restart_pressed():
 func end_game ():
 	if get_tree().has_network_peer ():
 		get_tree().set_network_peer(null)
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://crafting_menu/Menu.tscn")
 
 func _on_Exit_pressed():
@@ -172,6 +179,7 @@ func _on_Exit_pressed():
 
 
 func _on_BackPanel_pressed():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene("res://crafting_menu/Menu.tscn")
 	
 func multiplayer_configs ():
