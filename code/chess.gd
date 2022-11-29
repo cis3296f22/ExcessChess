@@ -220,8 +220,9 @@ func tile_clicked(tile: int):#, state_array, cord_array, highlight_array
 			possible_passeant_highlighted = []
 			possible_passeant_attacked_piece = []
 			do_highlight(tile, moving_team)
-			
+	
 	check_for_promotion()
+	is_checkmate(tile_highlighted)
 	#game info stored in game_state
 	piece_cord_array = game_state.pieces_cord
 	piece_state_array = game_state.pieces_state
@@ -293,6 +294,23 @@ func get_moves_of_piece(tile: int, game, allow_special_move):
 	#print(moves)
 	return moves
 
+func is_checkmate(tile_highlighted):
+	var team = "black"
+	if(white_turn):
+		team = "white"
+	var list_pieces_cord = game_state.pieces_cord
+	var moves_from_1_piece
+	for tile in list_pieces_cord:
+		var piece = game_state.state_from_cord(tile)
+		if piece.team != team:
+			continue
+		moves_from_1_piece = get_moves_of_piece(tile, game_state, false)
+		remove_moves_that_kill_king(moves_from_1_piece, tile)
+		if moves_from_1_piece.size() > 0:
+			return false
+	print("checkmate")
+	return true
+
 #checks all the moves highlighted, does the move, then checks whether the king is a target.
 #if the king is a target, it is an invalid move, and we remove it.
 func remove_moves_that_kill_king(highlights, tile_highlighted):
@@ -307,6 +325,9 @@ func remove_moves_that_kill_king(highlights, tile_highlighted):
 	#copy the game, and do each available move
 	for i in range(0, highlights.size()):
 		temp_game = game_state.copy(Game_state.new(board_width, board_height))
+		#check if the king is making the move so we dont loose track of our target tile
+		if tile_highlighted == my_king_tile:
+			my_king_tile = highlights[i]
 		temp_game.move(tile_highlighted, highlights[i])
 		#if the move allows the enemy to kill the king, remove the move
 		if(move_kills_king(temp_game, my_king_tile, team)):
