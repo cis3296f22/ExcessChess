@@ -14,23 +14,23 @@ func _init(name_):
 # Validates a line of spaces and adds valid spaces to the list of positions.
 # Arguments:
 # positions: The array of positions.
-# game: The game state information.
 # pos: The original position of the piece.
 # piece: The selected piece's state information.
-func add_pos(positions, game, pos, piece):
+# game: The game state information.
+func add_pos(positions, pos, piece, game):
 	var start: int
 	var end: int
 	var file = pos % game.width
 	var rank = pos / game.width
 	# Check spaces down-right from origin.
 	start = pos + game.width + 1
-	end = pos + 1 + (game.width + 1) * (round(min(game.width - file, game.height - rank)) - 1)
+	end = pos + 1 + (game.width + 1) * min(game.width - file, game.height - rank) - 1
+	printerr("DR< range: " + str(pos) + "," + str(start) + "," + str(end))
 	if start < end:
-		linear.add_pos_linear(positions, start, end, game.width + 1,
-				game.max_pos, piece.team, game.pieces)
+		linear.add_pos_linear(positions, start, end, game.width + 1, piece.team, game)
 	# Check spaces up-left from origin.
 	start = pos - game.width - 1
-	end = pos - 1 - (game.width + 1) * (round(min(rank, file)))
+	end = pos - 1 - (game.width + 1) * min(rank, file)
+	printerr("UL> range: " + str(pos) + "," + str(start) + "," + str(end))
 	if start > end:
-		linear.add_pos_linear(positions, start, end, -game.width - 1,
-				game.max_pos, piece.team, game.pieces)
+		linear.add_pos_linear(positions, start, end, -game.width - 1, piece.team, game)
