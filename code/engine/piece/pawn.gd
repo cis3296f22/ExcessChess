@@ -12,11 +12,12 @@ func calc_moves(pos, piece, game):
 	var positions = []
 	var sgn = 1 if piece.team == game.Team[1] else -1
 	var new_pos
+	var can_move_forward: bool
 
 	# Get forward movements.
 	new_pos = pos + sgn * game.get("width")
-	_add_move(positions, new_pos, game.get("max_pos"), game)
-	if not piece.has_moved:
+	can_move_forward = _add_move(positions, new_pos, game.get("max_pos"), game)
+	if not piece.has_moved and can_move_forward:
 		_add_move(positions, new_pos + sgn * game.get("width"), game.get("max_pos"), game)
 	# Get diagonal captures.
 	_add_capture(positions, new_pos + 1, piece, game)
@@ -33,9 +34,13 @@ func calc_moves(pos, piece, game):
 # new_pos: The prospective position.
 # max_pos: The maximum position.
 # board_map: The map of board positions and chess pieces.
+# Returns:
+# Returns true if the addition was successful.
 func _add_move(positions, new_pos, max_pos, game):
 	if game.state_from_cord(new_pos) == null and new_pos >= 0 and new_pos <= max_pos:
 		positions.append(new_pos)
+		return true
+	return false
 
 
 # Checks if a space is occupied and can be captured, and if so, adds it to the
