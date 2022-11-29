@@ -23,8 +23,7 @@ func before_all():
 
 func after_each():
 	# Clear the board.
-	for index in game_state.pieces_cord:
-		game_state.remove(index)
+	game_state = GameState.new(8, 8)
 
 
 # Tests the movement of a rook that can move up, down, left, or right.
