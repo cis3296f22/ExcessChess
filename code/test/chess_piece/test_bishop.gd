@@ -18,7 +18,7 @@ func before_all():
 	bishop_logic = Bishop.new()
 
 	# Load the bishop chess piece state.
-	bishop_state = PieceState.new(0, game_state.Team[1], bishop_logic.name)
+	bishop_state = PieceState.new(0, game_state.Team[1], bishop_logic)
 
 
 func after_each():
