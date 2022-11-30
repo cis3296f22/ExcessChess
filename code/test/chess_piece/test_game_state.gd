@@ -67,16 +67,13 @@ func test_add():
 
 
 # Tests that the game state can identify if a piece exists at a location.
-func test_has_pass():
+func test_has():
 	# Directly add a piece to the board to position 18 (c6).
 	game_state.pieces_state.append(piece_state)
 	game_state.pieces_cord.append(18)
 
 	assert_true(game_state.has(18), "The piece should exist at position 18 (c6).")
-
-# Tests that the game state cannot find a piece if it does not exist.
-func test_has_fail():
-	assert_false(game_state.has(18), "A piece should not exist at position 18 (c6).")
+	assert_false(game_state.has(19), "A piece should not exist at position 19 (d7).")
 
 # Tests that a piece at a coordinate has a specific type.
 func test_has_specific_type():
@@ -89,10 +86,10 @@ func test_has_specific_type():
 	game_state.pieces_cord.append(18)
 
 	# Test if the piece's type matches the original logic type.
-	assert_true(game_state.has_specific_type(18, piece_state))
+	assert_true(game_state.has_specific_type(18, piece_state), "Type should match.")
 
 	# Test if the piece's type does not match the new logic type.
-	assert_false(game_state.has_specific_type(18, test_state))
+	assert_false(game_state.has_specific_type(18, test_state), "Type should not match.")
 
 # Tests that a piece can be removed by its index number.
 func test_remove():
