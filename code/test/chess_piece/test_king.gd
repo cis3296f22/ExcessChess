@@ -71,16 +71,12 @@ func test_king_edge():
 
 	_assert_eq_positions(result, expected)
 
-	gut.p(result)
-
 	# Move king to a1.
 	game_state.move(7, 56)
 
 	expected = [48, 49, 57]
 
 	result = king_logic.calc_moves(56, king_state, game_state)
-
-	gut.p(result)
 
 	_assert_eq_positions(result, expected)
 
