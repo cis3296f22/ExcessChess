@@ -18,7 +18,7 @@ func before_all():
 	rook_logic = Rook.new()
 
 	# Load the rook chess piece state.
-	rook_state = PieceState.new(0, game_state.Team[1], rook_logic.name)
+	rook_state = PieceState.new(0, game_state.Team[1], rook_logic)
 
 
 func after_each():

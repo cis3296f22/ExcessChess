@@ -19,8 +19,8 @@ func before_all():
 
 	# Load the pawn chess piece states. Team 0 moves up, Team 1 moves down.
 	pawn_state = []
-	pawn_state.append(PieceState.new(0, game_state.Team[0], pawn_logic.name))
-	pawn_state.append(PieceState.new(0, game_state.Team[1], pawn_logic.name))
+	pawn_state.append(PieceState.new(0, game_state.Team[0], pawn_logic))
+	pawn_state.append(PieceState.new(0, game_state.Team[1], pawn_logic))
 
 
 func after_each():

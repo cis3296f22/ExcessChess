@@ -18,22 +18,16 @@ _global_script_classes=[ {
 "class": "GutTest",
 "language": "GDScript",
 "path": "res://addons/gut/test.gd"
-}, {
-"base": "Node",
-"class": "game_state",
-"language": "GDScript",
-"path": "res://game_state_tyler.gd"
 } ]
 _global_script_class_icons={
 "GutHookScript": "",
-"GutTest": "",
-"game_state": ""
+"GutTest": ""
 }
 
 [application]
 
 config/name="Code"
-run/main_scene="res://crafting_menu/CraftingMenu.tscn"
+run/main_scene="res://scenes/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

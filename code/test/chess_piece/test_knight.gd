@@ -18,7 +18,7 @@ func before_all():
 	knight_logic = Knight.new()
 
 	# Load the knight chess piece state.
-	knight_state = PieceState.new(0, game_state.Team[1], knight_logic.name)
+	knight_state = PieceState.new(0, game_state.Team[1], knight_logic)
 
 
 func after_each():
